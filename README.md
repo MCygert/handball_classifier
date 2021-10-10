@@ -15,3 +15,7 @@ It's should count all statistics for
  - [ ] Validate on full game
  - [ ] Deploy as app or website
 
+## Resources 
+ - [Medium article](https://medium.com/howtoai/video-classification-with-cnn-rnn-and-pytorch-abe2f9ee031)
+ - [Video classifing using 3d ResNet](https://github.com/kenshohara/video-classification-3d-cnn-pytorch)
+ - [Quick and simple action recognition on movie](https://github.com/kenshohara/video-classification-3d-cnn-pytorch)
