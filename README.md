@@ -6,12 +6,19 @@ It's should count all statistics for
 - shots 
 - intercepts
 
-## Plan how to make it working
+## Plan how to implement it
 
- - [ ] Fetch data of few games
- - [ ] Split into single actions mentioned earlier
+ - [ x ] Fetch data of few games
+ - [ x ] Split into single actions mentioned earlier
+ - [ ] Create dataloader
+ - [ ] Create transformation for data
+ - [ ] Use fine tuning from ImageNet
+ - [ ] Create model
  - [ ] Train CRNN 
- - [ ] Validate on test datya
+ - [ ] Validate on test data
+ 
+ 
+ ## For future.
  - [ ] Validate on full game
  - [ ] Deploy as app or website
 
