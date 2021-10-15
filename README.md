@@ -8,12 +8,12 @@ It's should count all statistics for
 
 ## Plan how to implement it
 
- - [ x ] Fetch data of few games
- - [ x ] Split into single actions mentioned earlier
- - [ ] Create dataSet
- - [ ] Create dataloader
+ - [x] Fetch data of few games
+ - [x] Split into single actions mentioned earlier
+ - [x] Create dataSet
+ - [x] Create dataloader
  - [ ] Create transformation for data
- - [ ] Use fine tuning from ImageNet
+ - [ ] Use fine-tuning from ImageNet
  - [ ] Create model
  - [ ] Train CRNN 
  - [ ] Validate on test data
@@ -21,6 +21,9 @@ It's should count all statistics for
  
  ## For future.
  - [ ] Validate on full game
+ - [ ] Check different models
+ - [ ] Try make loading frames more efficient
+ - [ ] Maybe use same cache for videos
  - [ ] Deploy as app or website
 
 ## Resources 
