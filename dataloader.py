@@ -27,10 +27,10 @@ def get_frames(filename, n_frames=3):
 
 
 class VideoDataSet(Dataset):
-    def __init__(self, all_video_file):
+    def __init__(self, all_video_file, transformers):
         # This maps csv which has file path and label to numpy arrray 
         self.videos = np.genfromtxt(all_video_file, delimiter=",", dtype=np.unicode_)
-        #self.transformers = transformers
+        self.transformers = transformers
 
     def __len__(self):
         return len(self.videos)
@@ -41,7 +41,7 @@ class VideoDataSet(Dataset):
         frames_torch = []
 
         for frame in frames:
-            #frame = self.transformers(frame)
+            frame = self.transformers(frame)
             frames_torch.append(frame)
         if len(frames_torch) > 0:
             frames_torch = torch.stack(frames_torch)
@@ -49,9 +49,10 @@ class VideoDataSet(Dataset):
 
 
 data_transform = transforms.Compose([
-    transforms.Resize((720, 720)),
+    transforms.Resize((256, 256)),
     transforms.ToTensor(),
 
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
 ])
+
