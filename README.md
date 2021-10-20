@@ -12,9 +12,10 @@ It's should count all statistics for
  - [x] Split into single actions mentioned earlier
  - [x] Create dataSet
  - [x] Create dataloader
- - [ ] Create transformation for data
+ - [x] Create transformation for data
  - [ ] Use fine-tuning from ImageNet
- - [ ] Create model
+ - [x] Create CNN
+ - [ ] Create CRNN
  - [ ] Train CRNN 
  - [ ] Validate on test data
  

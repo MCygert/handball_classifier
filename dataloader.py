@@ -3,6 +3,7 @@ from torch.utils.data import Dataset, DataLoader
 import numpy as np
 import torch
 from torchvision import transforms
+from PIL import Image
 
 
 def get_frames(filename, n_frames=3):
@@ -26,11 +27,19 @@ def get_frames(filename, n_frames=3):
     return np_asarray,  v_len
 
 
+def _cut_frames(frames, length, number_of_frames_wanted):
+    difference = length - number_of_frames_wanted
+    half_of_frames_to_delete = difference // 2
+
+    return frames[half_of_frames_to_delete: length - half_of_frames_to_delete]
+
+
 class VideoDataSet(Dataset):
-    def __init__(self, all_video_file, transformers):
+    def __init__(self, all_video_file, transformers, how_many_frames):
         # This maps csv which has file path and label to numpy arrray 
         self.videos = np.genfromtxt(all_video_file, delimiter=",", dtype=np.unicode_)
         self.transformers = transformers
+        self.how_many_frames = how_many_frames
 
     def __len__(self):
         return len(self.videos)
@@ -38,10 +47,12 @@ class VideoDataSet(Dataset):
     def __getitem__(self, idx):
         movie, label = self.videos[idx]
         frames, length = get_frames(movie)
+        frames = _cut_frames(frames, length, self.how_many_frames)
         frames_torch = []
 
         for frame in frames:
-            frame = self.transformers(frame)
+            image = Image.fromarray(frame, "RGB")
+            frame = self.transformers(image)
             frames_torch.append(frame)
         if len(frames_torch) > 0:
             frames_torch = torch.stack(frames_torch)
@@ -51,7 +62,6 @@ class VideoDataSet(Dataset):
 data_transform = transforms.Compose([
     transforms.Resize((256, 256)),
     transforms.ToTensor(),
-
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
 ])
