@@ -10,9 +10,9 @@ classes = ('pass', 'shot', 'save')
 class CRNN(nn.Module):
     def __init__(self):
         super(CRNN, self).__init__()
-        self.conv_layer_1 = self._create_convolution_layer(2, 32)
+        self.conv_layer_1 = self._create_convolution_layer(15, 32)
         self.conv_layer_2 = self._create_convolution_layer(32, 64)
-        self.fc1 = nn.Linear(2 ** 3 * 64, 128)
+        self.fc1 = nn.Linear(262144, 1)
         self.fc2 = nn.Linear(128, len(classes))
         self.relu = nn.LeakyReLU()
         self.batch = nn.BatchNorm1d(128)
