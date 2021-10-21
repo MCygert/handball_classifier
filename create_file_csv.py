@@ -13,8 +13,6 @@ for directory in directories:
         files.append([video_path, directory])
 
 with open("./data/videos.csv", "w+") as f:
-     print(f)
-     print(dir(f))
      writer = csv.writer(f)
      writer.writerows(files)
 

@@ -4,7 +4,6 @@ def train_loop(data_loader, model, optimizer, criterion, epochs):
         running_loss = 0.0
         for i, data in enumerate(data_loader, 0):
             input, labels = data
-
             optimizer.zero_grad()
             outputs = model.forward(input)
             loss = criterion(outputs, labels)

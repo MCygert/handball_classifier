@@ -24,7 +24,7 @@ def get_frames(filename, n_frames=3):
     v_cap.release()
     # Change dimensions to Frames x Channel x Height x Width
     np_asarray = np.transpose(np.asarray(frames),  (0,3,2,1))
-    return np_asarray,  v_len
+    return np_asarray,  len(np_asarray)
 
 
 def _cut_frames(frames, length, number_of_frames_wanted):
@@ -54,9 +54,7 @@ class VideoDataSet(Dataset):
             image = Image.fromarray(frame, "RGB")
             frame = self.transformers(image)
             frames_torch.append(frame)
-        if len(frames_torch) > 0:
-            frames_torch = torch.stack(frames_torch)
-        return frames_torch, label
+        return torch.stack(frames_torch), label
 
 
 data_transform = transforms.Compose([

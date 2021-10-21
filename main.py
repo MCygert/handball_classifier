@@ -21,6 +21,6 @@ transformers = transforms.Compose([
                          std=[0.229, 0.224, 0.225]),
 ])
 ds = VideoDataSet("data/videos.csv", transformers, 15)
-dl = DataLoader(ds, batch_size=4, shuffle=True)
+dl = DataLoader(ds, shuffle=True)
 
 train_loop(dl, model, optimizer, criterion, epochs)
