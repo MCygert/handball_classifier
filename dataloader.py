@@ -23,8 +23,8 @@ def get_frames(filename, n_frames=3):
 
     v_cap.release()
     # Change dimensions to Frames x Channel x Height x Width
-    np_asarray = np.transpose(np.asarray(frames),  (0,3,2,1))
-    return np_asarray,  len(np_asarray)
+    np_asarray = np.transpose(np.asarray(frames), (0, 3, 2, 1))
+    return np_asarray, len(np_asarray)
 
 
 def _cut_frames(frames, length, number_of_frames_wanted):
@@ -61,6 +61,5 @@ data_transform = transforms.Compose([
     transforms.Resize((256, 256)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                             std=[0.229, 0.224, 0.225]),
+                         std=[0.229, 0.224, 0.225]),
 ])
-
