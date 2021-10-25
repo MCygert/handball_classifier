@@ -39,3 +39,5 @@ It's should count all statistics for
 - [Video classifing using 3d ResNet](https://github.com/kenshohara/video-classification-3d-cnn-pytorch)
 - [Quick and simple action recognition on movie](https://github.com/kenshohara/video-classification-3d-cnn-pytorch)
 - [Data loader](https://discuss.pytorch.org/t/video-classification-with-cnn-lstm/113413)
+- [Formula for shape](https://stats.stackexchange.com/questions/323313/how-to-calculate-output-shape-in-3d-convolution)
+- [Again some caluclations for shape](https://cs231n.github.io/convolutional-networks/#conv)
