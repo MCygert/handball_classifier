@@ -8,8 +8,11 @@ from torch.optim import Adam
 import torch
 from torch import nn
 
-model = CRNN()
-epochs = 200
+
+device = ('cuda' if torch.cuda.is_available() else 'cpu')
+
+model = CRNN().to(device=device)
+epochs = 200 
 learning_rate = 1e-4
 optimizer = Adam(model.parameters(), lr=learning_rate)
 # Cross Entropy Loss
@@ -21,6 +24,6 @@ transformers = transforms.Compose([
                          std=[0.229, 0.224, 0.225]),
 ])
 ds = VideoDataSet("data/videos.csv", transformers, 15)
-dl = DataLoader(ds, shuffle=True)
+dl = DataLoader(ds, shuffle=True, num_workers=4)
 
-train_loop(dl, model, optimizer, criterion, epochs)
+train_loop(dl, model, optimizer, criterion, epochs, device)

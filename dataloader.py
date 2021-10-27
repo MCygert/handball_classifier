@@ -5,7 +5,6 @@ import torch
 from torchvision import transforms
 from PIL import Image
 
-
 def get_frames(filename, n_frames=3):
     frames = []
     v_cap = cv2.VideoCapture(filename)
@@ -40,6 +39,7 @@ class VideoDataSet(Dataset):
         self.videos = np.genfromtxt(all_video_file, delimiter=",", dtype=np.unicode_)
         self.transformers = transformers
         self.how_many_frames = how_many_frames
+        self.video_labels = {"passes" : 0, "shots" : 1, "saves" : 2}
 
     def __len__(self):
         return len(self.videos)
@@ -54,7 +54,7 @@ class VideoDataSet(Dataset):
             image = Image.fromarray(frame, "RGB")
             frame = self.transformers(image)
             frames_torch.append(frame)
-        return torch.stack(frames_torch), label
+        return torch.stack(frames_torch), self.video_labels.get(label)
 
 
 data_transform = transforms.Compose([
