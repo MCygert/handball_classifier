@@ -12,11 +12,6 @@ def train_loop(data_loader, model, optimizer, criterion, epochs, device):
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
-
             running_loss += loss.item()
-            print(running_loss)
-        if i % 100 == 0:  # print every 100 mini-batches
-            print('[%d, %5d] loss: %.3f' %
-                    (epoch + 1, i + 1, running_loss / 100))
-            
+        print("Epoch: {} Loss {}".format(epoch, running_loss/len(data_loader)))
 
