@@ -13,5 +13,6 @@ def train_loop(data_loader, model, optimizer, criterion, epochs, device):
             loss.backward()
             optimizer.step()
             running_loss += loss.item()
+            print(running_loss)
         print("Epoch: {} Loss {}".format(epoch, running_loss/len(data_loader)))
 

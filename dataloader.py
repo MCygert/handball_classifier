@@ -22,7 +22,7 @@ def get_frames(filename, n_frames=3):
 
     v_cap.release()
     # Change dimensions to Frames x Channel x Height x Width
-    np_asarray = np.transpose(np.asarray(frames), (3,0, 2, 1))
+    np_asarray = np.transpose(np.asarray(frames), (3,0,2, 1))
     return np_asarray, len(np_asarray)
 
 
@@ -46,6 +46,7 @@ class VideoDataSet(Dataset):
 
     def __getitem__(self, idx):
         movie, label = self.videos[idx]
+        print(movie)
         frames, length = get_frames(movie)
         frames = _cut_frames(frames, length, self.how_many_frames)
         frames_torch = []
