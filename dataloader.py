@@ -5,6 +5,7 @@ import torch
 from torchvision import transforms
 from PIL import Image
 
+
 def get_frames(filename, n_frames=3):
     frames = []
     v_cap = cv2.VideoCapture(filename)
@@ -22,7 +23,7 @@ def get_frames(filename, n_frames=3):
 
     v_cap.release()
     # Change dimensions to Frames x Channel x Height x Width
-    np_asarray = np.transpose(np.asarray(frames), (3,0,2, 1))
+    np_asarray = np.transpose(np.asarray(frames), (3, 0, 2, 1))
     return np_asarray, len(np_asarray)
 
 
@@ -39,14 +40,13 @@ class VideoDataSet(Dataset):
         self.videos = np.genfromtxt(all_video_file, delimiter=",", dtype=np.unicode_)
         self.transformers = transformers
         self.how_many_frames = how_many_frames
-        self.video_labels = {"passes" : 0, "shots" : 1, "saves" : 2}
+        self.video_labels = {"passes": 0, "shots": 1, "saves": 2}
 
     def __len__(self):
         return len(self.videos)
 
     def __getitem__(self, idx):
         movie, label = self.videos[idx]
-        print(movie)
         frames, length = get_frames(movie)
         frames = _cut_frames(frames, length, self.how_many_frames)
         frames_torch = []

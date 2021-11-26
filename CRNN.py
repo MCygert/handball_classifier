@@ -17,7 +17,7 @@ class CRNN(nn.Module):
 
     def _create_convolution_layer(self, c_in, c_out):
         return nn.Sequential(
-            nn.Conv3d(c_in, c_out, kernel_size=4, padding=(3,3,3), stride=(1,2,2)),
+            nn.Conv3d(c_in, c_out, kernel_size=4, padding=(3, 3, 3), stride=(1, 2, 2)),
             nn.LeakyReLU(inplace=True),
             nn.MaxPool3d((3, 3, 3)))
 
