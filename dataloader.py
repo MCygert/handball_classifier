@@ -23,15 +23,16 @@ def get_frames(filename, n_frames=3):
 
     v_cap.release()
     # Change dimensions to Frames x Channel x Height x Width
-    np_asarray = np.transpose(np.asarray(frames), (3, 0, 2, 1))
+    np_asarray = np.transpose(np.asarray(frames), (0, 3, 2, 1))
     return np_asarray, len(np_asarray)
 
 
 def _cut_frames(frames, length, number_of_frames_wanted):
     difference = length - number_of_frames_wanted
     half_of_frames_to_delete = difference // 2
+    difference = difference - half_of_frames_to_delete
 
-    return frames[half_of_frames_to_delete: length - half_of_frames_to_delete]
+    return frames[half_of_frames_to_delete: length - difference]
 
 
 class VideoDataSet(Dataset):
