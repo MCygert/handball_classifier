@@ -1,6 +1,35 @@
 # handball_classifier
 
-## Main purpose
+## Tensorflow
+Project should be able to classify action's from video. Like:
+- passes
+- shots
+- saves
+
+### Implementation
+It was implemented with CNN - LSTM architecture. First all videos are passed to CNN which is pretrained InceptionV3
+And after getting features it's passed to recurrent unit - LSTM.
+I have gathered data and labeled it by myself.
+
+### Conclusion of project
+I have very little data and probably biggest influence in performance has bad distribution of data -> a lot of passes but not so much of saves.
+
+
+
+### Things which I would like to try with this project
+1. Use different model like Video transformers -> [paper](https://arxiv.org/abs/2103.15691)
+2. Create better dataset loader -> [Data api](https://www.tensorflow.org/guide/data_performance)
+3. Try saving CNN features to files so I won't have to run them every time.
+4. Create confusion matrix of results.
+5. Structure project into separate files so it will be more clean 
+---
+
+
+
+
+
+## Pytorch -> I stopped learning Pytorch and changed to tensorflow but I will leave here the progress I made
+### Main purpose
 
 It's should count all statistics for
 
@@ -8,7 +37,7 @@ It's should count all statistics for
 - shots
 - intercepts
 
-## Plan how to implement it
+### Plan how to implement it
 
 - [x] Fetch data of few games
 - [x] Split into single actions mentioned earlier
@@ -22,7 +51,7 @@ It's should count all statistics for
 - [ ] Train CRNN
 - [ ] Validate on test data
 
-## For future.
+### For future.
 
 - [ ] Use fine-tuning from ImageNet
 - [ ] Do some hyperparameter research
@@ -32,7 +61,7 @@ It's should count all statistics for
 - [ ] Maybe use same cache for videos
 - [ ] Deploy as app or website
 
-## Resources
+### Resources
 
 - [Medium article](https://medium.com/howtoai/video-classification-with-cnn-rnn-and-pytorch-abe2f9ee031)
 - [Brandon Rohrer blog](https://e2eml.school/blog.html#193)
