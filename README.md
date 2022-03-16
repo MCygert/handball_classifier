@@ -14,6 +14,11 @@ I have gathered data and labeled it by myself.
 ### Conclusion of project
 I have very little data and probably biggest influence in performance has bad distribution of data -> a lot of passes but not so much of saves.
 
+### Second attemp to project 
+Because I had too few materials and manually trimming videos was time-consuming I have created video player for classifying videos
+-> [Tool](https://github.com/MCygert/video_player_for_classifing). So I will try to gather more videos and tackle the problem once again.
+
+
 
 
 ### Things which I would like to try with this project
@@ -21,7 +26,7 @@ I have very little data and probably biggest influence in performance has bad di
 2. Create better dataset loader -> [Data api](https://www.tensorflow.org/guide/data_performance)
 3. Try saving CNN features to files so I won't have to run them every time.
 4. Create confusion matrix of results.
-5. Structure project into separate files so it will be more clean 
+5. Structure project into separate files so it will be more clean (Not only in notebooks)
 ---
 
 
